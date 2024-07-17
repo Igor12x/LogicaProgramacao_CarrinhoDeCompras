@@ -15,7 +15,10 @@ function limpar() {
 
 function adicionar() {
     const quantidadeProduto = parseInt(document.getElementById(ID_QUANTIDADE_DE_PRODUTO).value);
-    const produtoSelecionado = document.getElementById(ID_PRODUTO_SELECIONADO).value;
+
+    if(verificaNumero(quantidadeProduto)){
+        
+    const produtoSelecionado = document.getElementById(ID_PRODUTO_SELECIONADO).value;   
     const [nomeProduto, valorProdutoString] = produtoSelecionado.split(' - ');
     const valorProdutoInteiro = parseInt(valorProdutoString.substring(2));
     
@@ -27,6 +30,10 @@ function adicionar() {
     valorTotalCarrinho += valorTotalProduto;
     
     atualizarValorTotalCarrinho(valorTotalCarrinho);
+    
+    } else {
+        alert('Valor do campo Qtde inválido');
+    }
 }
 
 function calculaValorCarrinho(quantidade, valor) {
@@ -35,4 +42,8 @@ function calculaValorCarrinho(quantidade, valor) {
 
 function atualizarValorTotalCarrinho(valor) {
     elementoValorTotalNoCarrinho.innerText = `R$ ${valor}`;
+}
+
+function verificaNumero(numero){
+   !isNaN(numero) || !numero<=0 ? true : false;
 }
