@@ -45,5 +45,5 @@ function atualizarValorTotalCarrinho(valor) {
 }
 
 function verificaNumero(numero){
-   !isNaN(numero) || !numero<=0 ? true : false;
+  return isNaN(numero) || numero<=0 ?  false : true ;
 }
